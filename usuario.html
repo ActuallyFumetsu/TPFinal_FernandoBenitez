@@ -2,13 +2,37 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Usuario</title>
+  <title>Panel del Usuario</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="user-container">
     <h1>Bienvenido, Usuario</h1>
-    <a href="index.html">Cerrar sesión</a>
+
+    <div class="menu">
+      <button onclick="mostrarContenido('libros')">📚 Libros</button>
+      <button onclick="mostrarContenido('estantes')">🗄️ Estantes</button>
+      <button onclick="mostrarContenido('generos')">🏷️ Géneros</button>
+    </div>
+
+    <div class="contenido" id="contenido">
+      <p>Selecciona una opción del menú.</p>
+    </div>
+
+    <a href="index.html" class="logout">Cerrar sesión</a>
   </div>
+
+  <script>
+    function mostrarContenido(opcion) {
+      const contenedor = document.getElementById("contenido");
+      if (opcion === "libros") {
+        contenedor.innerHTML = "<h2>Libros</h2><p>Aquí se mostrarán los libros disponibles.</p>";
+      } else if (opcion === "estantes") {
+        contenedor.innerHTML = "<h2>Estantes</h2><p>Visualiza los estantes y su ubicación.</p>";
+      } else if (opcion === "generos") {
+        contenedor.innerHTML = "<h2>Géneros</h2><p>Consulta los géneros de libros.</p>";
+      }
+    }
+  </script>
 </body>
 </html>
