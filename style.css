@@ -45,6 +45,45 @@ th, td {
   border-bottom: 1px solid #ccc;
 }
 
+.menu {
+  margin: 20px 0;
+}
+
+.menu button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu button:hover {
+  background-color: #357ABD;
+}
+
+.contenido {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.logout {
+  display: inline-block;
+  margin-top: 20px;
+  color: #555;
+  text-decoration: none;
+}
+
+.logout:hover {
+  text-decoration: underline;
+}
+
 input {
   width: 100%;
 }
