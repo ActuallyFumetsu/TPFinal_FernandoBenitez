@@ -13,6 +13,7 @@
       <button onclick="mostrarContenido('libros')">📚 Libros</button>
       <button onclick="mostrarContenido('estantes')">🗄️ Estantes</button>
       <button onclick="mostrarContenido('generos')">🏷️ Géneros</button>
+      <button onclick="mostrarContenido('usuarios')">👥 Usuarios</button>
     </div>
 
     <div class="contenido" id="contenido">
@@ -23,15 +24,54 @@
   </div>
 
   <script>
+    let usuarios = [
+      { nombre: "admin", rol: "administrador" },
+      { nombre: "usuario", rol: "lector" },
+      { nombre: "empleado", rol: "empleado" }
+    ];
+
     function mostrarContenido(opcion) {
       const contenedor = document.getElementById("contenido");
+
       if (opcion === "libros") {
         contenedor.innerHTML = "<h2>Libros</h2><p>Aquí se mostrarán los libros disponibles.</p>";
       } else if (opcion === "estantes") {
         contenedor.innerHTML = "<h2>Estantes</h2><p>Visualiza los estantes y su ubicación.</p>";
       } else if (opcion === "generos") {
         contenedor.innerHTML = "<h2>Géneros</h2><p>Consulta los géneros de libros.</p>";
+      } else if (opcion === "usuarios") {
+        let tabla = `
+          <h2>Usuarios y Roles</h2>
+          <table>
+            <thead>
+              <tr><th>Usuario</th><th>Rol</th></tr>
+            </thead>
+            <tbody>
+        `;
+
+        usuarios.forEach((u, i) => {
+          tabla += `
+            <tr>
+              <td>${u.nombre}</td>
+              <td>
+                <select onchange="cambiarRol(${i}, this.value)">
+                  <option value="administrador" ${u.rol === 'administrador' ? 'selected' : ''}>Administrador</option>
+                  <option value="empleado" ${u.rol === 'empleado' ? 'selected' : ''}>Empleado</option>
+                  <option value="lector" ${u.rol === 'lector' ? 'selected' : ''}>Lector</option>
+                </select>
+              </td>
+            </tr>
+          `;
+        });
+
+        tabla += `</tbody></table>`;
+        contenedor.innerHTML = tabla;
       }
+    }
+
+    function cambiarRol(index, nuevoRol) {
+      usuarios[index].rol = nuevoRol;
+      alert(`Rol de "${usuarios[index].nombre}" actualizado a "${nuevoRol}"`);
     }
   </script>
 </body>
