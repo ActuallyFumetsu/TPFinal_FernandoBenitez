@@ -1,3 +1,26 @@
+function login() {
+  const usernameInput = document.getElementById("username").value.trim();
+  const passwordInput = document.getElementById("password").value.trim();
+  const errorMsg = document.getElementById("error-msg");
+
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const user = users.find(u => u.username === usernameInput && u.password === passwordInput);
+
+  if (user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    if (user.username === "admin") {
+      window.location.href = "admin.html";
+    } else {
+      window.location.href = "usuario.html";
+    }
+  } else {
+    errorMsg.textContent = "Usuario o contraseña incorrectos.";
+    errorMsg.style.color = "red";
+  }
+}
+
 // Cargar usuarios desde localStorage o usar los predeterminados
 let users = JSON.parse(localStorage.getItem("users")) || [
   { username: "admin", password: "admin123" },
@@ -77,31 +100,4 @@ function addUser() {
   document.getElementById("new-password").value = "";
 
   alert("Usuario agregado con éxito.");
-}
-
-function login() {
-  const usernameInput = document.getElementById("username").value.trim();
-  const passwordInput = document.getElementById("password").value.trim();
-  const errorMsg = document.getElementById("error-msg");
-
-  // Obtener los usuarios desde localStorage
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-
-  // Buscar al usuario
-  const user = users.find(u => u.username === usernameInput && u.password === passwordInput);
-
-  if (user) {
-    // Guardar al usuario actual (por si se necesita en otras páginas)
-    localStorage.setItem("currentUser", JSON.stringify(user));
-
-    // Redirección según el tipo de usuario
-    if (user.username === "admin") {
-      window.location.href = "admin.html";
-    } else {
-      window.location.href = "usuario.html";
-    }
-  } else {
-    errorMsg.textContent = "Usuario o contraseña incorrectos.";
-    errorMsg.style.color = "red";
-  }
 }
