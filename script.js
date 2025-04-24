@@ -1,3 +1,9 @@
+localStorage.setItem("users", JSON.stringify([
+  { username: "admin", password: "admin123" },
+  { username: "usuario", password: "usuario123" },
+  { username: "empleado", password: "empleado123" }
+]));
+
 function login() {
   const usernameInput = document.getElementById("username").value.trim();
   const passwordInput = document.getElementById("password").value.trim();
