@@ -8,6 +8,13 @@
 <body>
   <div class="admin-container">
     <h1>Panel del Administrador</h1>
+
+    <h2>Crear Nuevo Usuario</h2>
+    <input type="text" id="new-username" placeholder="Nuevo usuario">
+    <input type="password" id="new-password" placeholder="Contraseña">
+    <button onclick="addUser()">Agregar Usuario</button>
+
+    <h2>Lista de Usuarios</h2>
     <table id="users-table">
       <thead>
         <tr>
@@ -18,7 +25,8 @@
       </thead>
       <tbody></tbody>
     </table>
-    <a href="index.html">Cerrar sesión</a>
+
+    <a href="index.html" class="logout">Cerrar sesión</a>
   </div>
 
   <script src="script.js"></script>
